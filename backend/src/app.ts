@@ -4,10 +4,10 @@ import { CorsOptions } from "cors"
 import helmet from "helmet"
 import compression from "compression"
 // custom modules
-import config from "./configs/env"
-import limiter from "./lib/express_rate_limit"
+import config from "@/configs/env"
+import limiter from "@/lib/express_rate_limit"
 // routes import & versioning
-import apiV1Routes from "./routes/v1"
+import apiV1Routes from "@/routes/v1"
 const routeVersion = "v1"
 
 // declare instance of Express
@@ -26,11 +26,7 @@ app.use(limiter)
 // CORS configuration
 const corsOptions: CorsOptions = {
   origin(origin, callback) {
-    if (
-      !config.isProd ||
-      !origin ||
-      config.WHITELIST_ORIGINS.includes(origin)
-    ) {
+    if (!config.isProd || !origin || config.whitelistOrigins.includes(origin)) {
       // Development Mode: Allow all origins or whitelisted origins
       callback(null, true)
     } else {

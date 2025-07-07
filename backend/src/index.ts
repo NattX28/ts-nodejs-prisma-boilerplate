@@ -1,5 +1,5 @@
-import app from "./app"
-import config from "./configs/env"
+import app from "@/app"
+import config from "@/configs/env"
 
 // Enviroment check
 if (config.isProd) {
@@ -9,8 +9,8 @@ if (config.isProd) {
 }
 
 // Start the server
-const server = app.listen(config.PORT, () => {
-  console.log(`Server is running on port ${config.PORT}`)
+const server = app.listen(config.port, () => {
+  console.log(`Server is running on port ${config.port}`)
 })
 
 // Graceful shutdown
