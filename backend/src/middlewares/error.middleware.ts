@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { ZodError } from "zod"
 import logger from "@/configs/logger.config"
+import config from "@/configs/env.config"
 
 export interface ApiError extends Error {
   statusCode?: number
@@ -73,7 +74,7 @@ export const errorHandler = (
   res.status(statusCode).json({
     success: false,
     message,
-    ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
+    ...(config.nodeENV === "development" && { stack: err.stack }),
   })
 }
 
