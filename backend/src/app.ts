@@ -4,7 +4,7 @@ import { CorsOptions } from "cors"
 import helmet from "helmet"
 import compression from "compression"
 // custom modules
-import config from "@/configs/env"
+import config from "@/configs/env.config"
 import limiter from "@/lib/express_rate_limit"
 // routes import & versioning
 import apiV1Routes from "@/routes/v1"

@@ -1,4 +1,4 @@
-import config from "@/configs/env"
+import config from "@/configs/env.config"
 
 interface JWTConfig {
   accessTokenSecret: string

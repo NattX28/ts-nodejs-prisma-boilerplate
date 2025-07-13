@@ -1,5 +1,5 @@
 import app from "@/app"
-import config from "@/configs/env"
+import config from "@/configs/env.config"
 
 // Enviroment check
 if (config.isProd) {

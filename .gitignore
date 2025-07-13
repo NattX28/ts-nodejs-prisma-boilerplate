@@ -25,6 +25,10 @@ prisma/migrations/
 *.sqlite
 *.sqlite3
 
+# Prisma generated files
+**/generated/
+backend/src/generated/
+
 # MongoDB (if using)
 mongodb-data/
 
@@ -131,7 +135,6 @@ temp/
 pm2-logs/
 
 # Docker
-.dockerignore
 docker-compose.override.yml
 
 # Terraform
@@ -140,3 +143,6 @@ docker-compose.override.yml
 
 # Local development files
 .local/
+
+# TypeScript
+*.js.map

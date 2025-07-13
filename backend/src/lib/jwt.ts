@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
-import { jwtConfig } from "@/configs/jwt"
-import { JWTPayload, RefreshTokenPayload } from "@/types/auth"
+import { jwtConfig } from "@/configs/jwt.config"
+import { JWTPayload, RefreshTokenPayload } from "@/types/auth.type"
 
 export const generateAccessToken = (payload: JWTPayload): string => {
   return jwt.sign(payload, jwtConfig.accessTokenSecret, {
