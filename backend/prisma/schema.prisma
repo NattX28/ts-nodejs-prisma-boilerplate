@@ -49,3 +49,5 @@ model RefreshToken {
 
   @@map("refresh_tokens")
 }
+
+// Other relations
