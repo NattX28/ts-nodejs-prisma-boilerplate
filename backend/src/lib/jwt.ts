@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken"
+import { randomUUID } from "crypto"
 import { jwtConfig } from "@/configs/jwt.config"
 import { JWTPayload, RefreshTokenPayload } from "@/types/auth.type"
 
@@ -35,4 +36,8 @@ export const verifyRefreshToken = (
   } catch (error) {
     return null
   }
+}
+
+export const generateTokenId = (): string => {
+  return randomUUID()
 }

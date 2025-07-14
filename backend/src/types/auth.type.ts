@@ -1,13 +1,15 @@
-export interface User {
-  id: number
-  email: string
-  username: string
-  password?: string
-  role: string
-  isActive: boolean
-  createdAt: Date
-  updatedAt: Date
-}
+import { User as PrismaUser, Role } from "@prisma/client"
+
+// export interface User extends PrismaUser {
+//   id: number
+//   email: string
+//   username: string
+//   password: string
+//   role: Role
+//   isActive: boolean
+//   createdAt: Date
+//   updatedAt: Date
+// }
 
 export interface AuthTokens {
   accessToken: string
