@@ -1,5 +1,8 @@
 import { Router } from "express"
 import { Response } from "express"
+import authRoutes from "@/routes/v1/auth.route"
+import userRoutes from "@/routes/v1/user.route"
+
 const router = Router()
 
 router.get("/health", (_, res: Response) => {
@@ -20,5 +23,9 @@ router.get("/health", (_, res: Response) => {
     })
   }
 })
+
+// API routes
+router.use("/auth", authRoutes)
+router.use("/user", userRoutes)
 
 export default router
