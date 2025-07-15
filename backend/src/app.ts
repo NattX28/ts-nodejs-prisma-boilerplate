@@ -3,6 +3,7 @@ import cors from "cors"
 import { CorsOptions } from "cors"
 import helmet from "helmet"
 import compression from "compression"
+import cookieParser from "cookie-parser"
 // custom modules
 import config from "@/configs/env.config"
 import limiter from "@/lib/express_rate_limit"
@@ -14,7 +15,8 @@ const routeVersion = "v1"
 const app = express()
 
 // Middleware setup
-app.use(express.json())
+app.use(express.json({ limit: "10mb" }))
+app.use(cookieParser())
 app.use(
   compression({
     threshold: 1024, // Compress responses larger than 1KB
