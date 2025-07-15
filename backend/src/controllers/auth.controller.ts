@@ -70,14 +70,14 @@ export const refreshToken = asyncHandler(
       httpOnly: true,
       secure: config.nodeENV === "production",
       sameSite: "none",
-      maxAge: 30 * 24 * 24 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     })
 
     res.json({
       success: true,
       message: "Token refreshed successfully",
       data: {
-        access: tokens.accessToken,
+        accessToken: tokens.accessToken,
       },
     })
   }
