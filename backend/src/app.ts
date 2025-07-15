@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser"
 // custom modules
 import config from "@/configs/env.config"
 import limiter from "@/lib/express_rate_limit"
+import { errorHandler, notFoundHandler } from "@/middlewares/error.middleware"
 // routes import & versioning
 import apiV1Routes from "@/routes/v1"
 const routeVersion = "v1"
@@ -16,6 +17,7 @@ const app = express()
 
 // Middleware setup
 app.use(express.json({ limit: "10mb" }))
+app.use(express.urlencoded({ extended: true, limit: "10mb" })) // url-enceoded middleware for form submissions
 app.use(cookieParser())
 app.use(
   compression({
@@ -36,10 +38,14 @@ const corsOptions: CorsOptions = {
       callback(new Error(`CORS ERROR: ${origin} is not allowed`), false)
     }
   },
+  credentials: true, // Allow cookie to be sent
 }
 app.use(cors(corsOptions))
 
 // Routes setup
 app.use(`/api/${routeVersion}`, apiV1Routes)
+
+app.use(notFoundHandler)
+app.use(errorHandler)
 
 export default app
