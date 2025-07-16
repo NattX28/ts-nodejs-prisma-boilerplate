@@ -10,6 +10,6 @@ interface JWTConfig {
 export const jwtConfig: JWTConfig = {
   accessTokenSecret: config.accessTokenSecret,
   refreshTokenSecret: config.refreshTokenSecret,
-  accessTokenExpiry: "15m",
-  refreshTokenExpiry: "30d",
+  accessTokenExpiry: config.accessTokenExpiry,
+  refreshTokenExpiry: config.accessTokenExpiry,
 }

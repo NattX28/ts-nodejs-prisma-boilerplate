@@ -24,7 +24,7 @@ router.post("/login", validateRequest(loginSchema), login)
 router.post("/refresh", refreshToken)
 
 // Protected routes
-router.post("logout", logout)
+router.post("/logout", logout)
 router.post("/logout-all", authenticateToken, logoutAll)
 router.get("/me", authenticateToken, getMe)
 router.post(
