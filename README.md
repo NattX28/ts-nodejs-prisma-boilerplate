@@ -9,7 +9,7 @@ Boilerplate for full-stack REST API using Typescript, Express, Prisma(postgreSQL
 
 A scalable, production-ready boilerplate for building secure REST APIs using TypeScript, Express, and PostgreSQL via Prisma ORM. Comes with built-in JWT authentication, RBAC, logging, and developer-friendly defaults.
 
-**Frontend:** Not included — you can integrate with any frontend framework (React, Vue, etc.)
+**Frontend:** Not included — you can integrate with any frontend framework (Nextjs, React, Vue, etc.)
 
 ## ✨ Features
 
