@@ -1,5 +1,6 @@
-import { PrismaClient, Role } from "@prisma/client"
+import { PrismaClient } from "@prisma/client"
 import logger from "../src/configs/logger.config"
+import config from "../src/configs/env.config"
 
 // import seed modules
 import { seedRoles } from "./seeds/roles.seed"
@@ -7,6 +8,13 @@ import { seedRoles } from "./seeds/roles.seed"
 const prisma = new PrismaClient()
 
 async function main() {
+  // Safety check - prevent accidental seeding in production
+  if (config.nodeENV === "production") {
+    logger.warn("⚠️ Seeding is disabled in production environment")
+    logger.warn("⚠️ If you really need to seed production, remove this check")
+    return
+  }
+
   logger.info("🌱 Starting database seeding...")
 
   await seedRoles(prisma)

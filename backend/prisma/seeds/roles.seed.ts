@@ -1,17 +1,18 @@
 import { PrismaClient, Role } from "@prisma/client"
 import logger from "../../src/configs/logger.config"
 import { hashPassword } from "../../src/helpers/password.helper"
+import config from "../../src/configs/env.config"
 
 export async function seedRoles(prisma: PrismaClient) {
   logger.info("🌱 Seeding roles...")
 
   // Create admin user
-  const adminPassword = await hashPassword("admin123456")
+  const adminPassword = await hashPassword(config.adminPassword)
   const admin = await prisma.user.upsert({
-    where: { email: "admin@example.com" },
+    where: { email: config.adminEmail },
     update: {},
     create: {
-      email: "admin@example.com",
+      email: config.adminEmail,
       username: "admin",
       password: adminPassword,
       role: Role.ADMIN,
@@ -19,25 +20,25 @@ export async function seedRoles(prisma: PrismaClient) {
     },
   })
 
-  const moderatorPassword = await hashPassword("moderator123456")
+  const moderatorPassword = await hashPassword(config.moderatorPassword)
   const moderator = await prisma.user.upsert({
-    where: { email: "moderator@example.com" },
+    where: { email: config.moderatorEmail },
     update: {},
     create: {
-      email: "moderator@example.com",
+      email: config.moderatorEmail,
       username: "moderator",
       password: moderatorPassword,
-      role: Role.USER,
+      role: Role.MODERATOR,
       isActive: true,
     },
   })
 
-  const userPassword = await hashPassword("user123456")
+  const userPassword = await hashPassword(config.userPassword)
   const user = await prisma.user.upsert({
-    where: { email: "user@example.com" },
+    where: { email: config.userEmail },
     update: {},
     create: {
-      email: "user@example.com",
+      email: config.userEmail,
       username: "user",
       password: userPassword,
       role: Role.USER,

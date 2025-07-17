@@ -13,6 +13,12 @@ interface Config {
   accessTokenExpiry: string
   refreshToken: string
   databaseURL: string
+  adminEmail: string
+  adminPassword: string
+  moderatorEmail: string
+  moderatorPassword: string
+  userEmail: string
+  userPassword: string
 }
 
 const isProd: boolean = process.env.NODE_ENV === "production"
@@ -38,6 +44,13 @@ const config: Config = {
   accessTokenExpiry: "15m",
   refreshToken: "30d",
   databaseURL: process.env.DATABASE_URL,
+  // seed env
+  adminEmail: process.env.ADMIN_EMAIL || "admin@example.com",
+  adminPassword: process.env.ADMIN_PASSWORD || "admin123456",
+  moderatorEmail: process.env.MODERATOR_EMAIL || "moderator@example.com",
+  moderatorPassword: process.env.MODERATOR_PASSWORD || "moderator123456",
+  userEmail: process.env.USER_EMAIL || "user@example.com",
+  userPassword: process.env.USER_PASSWORD || "user123456",
 }
 
 export default config
